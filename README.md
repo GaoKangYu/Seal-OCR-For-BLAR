@@ -1,28 +1,31 @@
-# SealOCR
+# Seal-OCR-For-BLAR
+“国土资源国土资源智能文档解析系统”项目
 
-#### 介绍
-此为印章识别项目数据图片极坐标转换后的识别测试代码，输入为极坐标变换后的LTR图片，存入./east/test/image/，输出为识别得到的文字。
-整体数据流如下：
-- 运行predict.py，读取./east/test/image/下图片，使用anchor覆盖文本区域，过程图存于./east/test/tmp/，获得检出文本区并使用矩形框标出的图片存于./east/test/predict/，裁剪矩形框区域，获得剔除背景的纯文本区域存于./crnn/test/recs/，读取./crnn/test/recs/下文件，输入CRNN网络，得到最后的预测结果。
+## 背景/需求
+- OCR输入PDF文档正文内容。
+- OCR所盖公章上面的文字，与公章下面的落款单位对比，如果一致则通过，不一致则提示用章错误，转为人工处理。
+## 环境需求
+-   Windows or Linux
+-   Python >= 3.5
+-   Pillow >= 6.1.0
+-   torch >= 1.2.0
+-   torchvision >= 0.4.1
+-   opencv-python >= 4.2.0
+-   scikit-image >= 0.17.2
+-   scipy >= 1.3.1
+-   cuda >= 10.0
+-   Full conda list can be found in environment.txt and craft/requirements.txt
 
-#### 代码目录结构
-
-- ./
-- --predict.py 端到端预测，输入./east/test/image/，通过east、crnn得到OCR文字输出
-- 
-- east
-- --data 存放处理数据集的部分代码
-- --model 存放east权重文件，download.txt中存放的是权重的百度云地址
-- --net 存放网络结构、训练代码、字典文件
-- --test 存放图片，image下的图片为east输入图片
-- --predict_east.py east预测代码
-- 
-- crnn
-- --data 存放处理数据集的部分代码
-- --model 存放CRNN权重文件，download.txt中存放的是7.12用于纠正测试权重的百度云地址
-- --net 存放网络结构、训练代码、字典文件
-- --test 存放文本区剪切后的east模型输出，CRNN输入图片
-- --predict_crnn.py crnn预测代码
-
-#### 待更新
-- 无
+## 代码目录结构
+```
+├── CRAFT(弯曲文本检测模型)
+│   ├── basenet
+│   ├── data(印章原始数据)
+│   ├── fail_log(用于保存后处理过程中出现的异常)
+│   ├── polar-img(仿射矫正后的正常语序印章文本)
+│   ├── result(CRAFT模型原始检测结果)
+│   ├── imgproc.py(包含自定义后处理，实现根据result文件夹中的原始输出，经处理生成polar-img中的仿射矫正后的正常语序印章文本)
+├── TPS(模糊文本识别模型)
+├── creat_dataset(用于生成合成数据集，训练TPS模型)
+```
+## 项目技术方案
