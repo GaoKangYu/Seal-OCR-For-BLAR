@@ -29,8 +29,9 @@
 ├── creat_dataset(用于生成合成数据集，训练TPS模型)
 ```
 ## 项目技术方案
-- 预期输入
-- 识别区块划分
+- 预期输入![raw_input](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/raw_input.png)
+- 识别区块划分![task_decomposition](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/task_decomposition.png)
 - 整体工作流程如下：
+
 1、整体通过颜色滤波，区分开红色与黑色，红色、黑色分别输出保存，可以获得水平文本识别区A和弯曲文本识别区共存的图片P1、水平文本识别区B的图片P2。
-<img src="https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/color_separation.png" width="475" height="290" alt="color_separation"/>
+![color_separation](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/color_separation.png)
