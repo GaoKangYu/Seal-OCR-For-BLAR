@@ -39,3 +39,15 @@
 
 1、整体通过颜色滤波，区分开红色与黑色，红色、黑色分别输出保存，可以获得水平文本识别区A和弯曲文本识别区共存的图片P1、水平文本识别区B的图片P2。
 ![color_separation](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/color_separation.png)
+
+2、以P1为输入，目标检测确定并抠取弯曲文本识别区（印章区域），以白色填充该区域，分别得到水平文本识别区A的图片P3和弯曲文本识别区域的图片P4。
+3、以水平文本识别方案（CTPN-DenseNet-CTC，CTPN检测、DenseNet+CTC实现不定长识别），对水平文本识别区A和B对应图片P2、P3进行OCR，获取其文本并保存于txt文档。
+![horizontal_text_recognition](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/horizontal_text_recognition.png)
+
+4、以P4为输入，采用弯曲文本检测方案（CRAFT+后处理）完成输入印章、输出语序正确的水平文本图片过程，具体过程为：首先通过CRAFT模型获取单字的位置信息，从而确定印章区域的质心和半径，采用笛卡尔坐标转极坐标的方式将弯曲文字转为正常语序的水平文字图片P5。
+![curved_text_processing_flow](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/curved_text_processing_flow.png)
+
+5、以P5为输入，经过模糊文字识别方案（TPS），输出保存于txt中。至此，完成整个PDF的OCR工作。
+
+- 附（用于训练TPS模型合成数据集的效果对比）
+![synthetic_dataset](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/synthetic_dataset.png)
