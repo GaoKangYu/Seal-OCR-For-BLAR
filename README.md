@@ -33,6 +33,6 @@
 <img src="https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/raw_input.png" width="390" height="435" alt="raw_input"/>
 - 识别区块划分
 <img src="https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/task_decomposition.png" width="390" height="435" alt="task_decomposition"/>
-- 整体工作流程
-- (1)整体通过颜色滤波，区分开红色与黑色，红色、黑色分别输出保存，可以获得水平文本识别区A和弯曲文本识别区共存的图片P1、水平文本识别区B的图片P2。
+#### 整体工作流程
+1、整体通过颜色滤波，区分开红色与黑色，红色、黑色分别输出保存，可以获得水平文本识别区A和弯曲文本识别区共存的图片P1、水平文本识别区B的图片P2。
 <img src="https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/color_separation.png" width="475" height="290" alt="color_separation"/>
