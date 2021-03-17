@@ -50,4 +50,6 @@
 5、以P5为输入，经过模糊文字识别方案（TPS），输出保存于txt中。至此，完成整个PDF的OCR工作。
 
 - 附（用于训练TPS模型合成数据集的效果对比）
+
+经仿射变换为正常语序的真实数据（上）与合成数据（下）
 ![synthetic_dataset](https://github.com/GaoKangYu/Seal-OCR-For-BLAR/blob/main/readme_fig/synthetic_dataset.png)
